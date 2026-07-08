@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <DUT Name="E_LightState" Id="{af14ab3e-bf48-48fa-8c10-0047b277413b}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'strict'}
+TYPE E_LightState :
+(
+    Red,
+    RedAmber,
+    Green,
+    Amber
+) := Red;
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

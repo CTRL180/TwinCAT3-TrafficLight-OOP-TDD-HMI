@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_TrafficLight_Test" Id="{05a59aff-e522-47ed-8604-19fdd813a76a}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_TrafficLight_Test EXTENDS TcUnit.FB_TestSuite
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[NewLightStartsInRed();]]></ST>
+    </Implementation>
+    <Method Name="NewLightStartsInRed" Id="{870cd3fb-b52e-4f56-bf23-b9ba4841ad63}">
+      <Declaration><![CDATA[METHOD PRIVATE NewLightStartsInRed
+VAR
+	light       : FB_TrafficLight;
+    actualState : E_LightState;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[TEST('NewLightStartsInRed');
+
+actualState := light.CurrentState;   // read the property into a variable first
+
+AssertEquals_INT(
+    Expected := TO_INT(E_LightState.Red),
+    Actual   := TO_INT(actualState),
+    Message  := 'A new light should start in RED');
+
+TEST_FINISHED();]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>

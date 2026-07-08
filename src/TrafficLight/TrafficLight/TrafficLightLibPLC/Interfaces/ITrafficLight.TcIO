@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <Itf Name="ITrafficLight" Id="{b2039307-2a7b-4887-9fed-80e45ee06bce}">
+    <Declaration><![CDATA[INTERFACE ITrafficLight
+]]></Declaration>
+    <Property Name="CurrentState" Id="{c01ada10-c8cc-48ae-9c46-da2e0692e2de}">
+      <Declaration><![CDATA[PROPERTY CurrentState  : E_LightState]]></Declaration>
+      <Get Name="Get" Id="{ad11bb5a-8608-41b6-baaa-619ecae7a69e}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+    </Property>
+  </Itf>
+</TcPlcObject>
