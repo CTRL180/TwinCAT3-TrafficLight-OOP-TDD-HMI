@@ -32,24 +32,24 @@ END_VAR
         <ST><![CDATA[CASE _phase OF
 
     E_Phase.AllRed:
-        _nsLight.CurrentState := E_LightState.Red;
-        _ewLight.CurrentState := E_LightState.Red;
+        _nsLight.SetState(E_LightState.Red);
+        _ewLight.SetState(E_LightState.Red);
 
     E_Phase.NorthSouthFlowing:
-        _nsLight.CurrentState := E_LightState.Green;
-        _ewLight.CurrentState := E_LightState.Red;
+        _nsLight.SetState(E_LightState.Green);
+        _ewLight.SetState(E_LightState.Red);
 
     E_Phase.NorthSouthClearing:
-        _nsLight.CurrentState := E_LightState.Amber;
-        _ewLight.CurrentState := E_LightState.Red;
+        _nsLight.SetState(E_LightState.Amber);
+        _ewLight.SetState(E_LightState.Red);
 
     E_Phase.EastWestFlowing:
-        _nsLight.CurrentState := E_LightState.Red;
-        _ewLight.CurrentState := E_LightState.Green;
+        _nsLight.SetState(E_LightState.Red);
+        _ewLight.SetState(E_LightState.Green);
 
     E_Phase.EastWestClearing:
-        _nsLight.CurrentState := E_LightState.Red;
-        _ewLight.CurrentState := E_LightState.Amber;
+        _nsLight.SetState(E_LightState.Red);
+        _ewLight.SetState(E_LightState.Amber);
 
 END_CASE]]></ST>
       </Implementation>

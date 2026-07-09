@@ -8,11 +8,6 @@
       <Get Name="Get" Id="{ad11bb5a-8608-41b6-baaa-619ecae7a69e}">
         <Declaration><![CDATA[]]></Declaration>
       </Get>
-      <Set Name="Set" Id="{a0d79e23-3803-44cb-9b8c-9bcc5e67e0e4}">
-        <Declaration><![CDATA[VAR
-END_VAR
-]]></Declaration>
-      </Set>
     </Property>
   </Itf>
 </TcPlcObject>
