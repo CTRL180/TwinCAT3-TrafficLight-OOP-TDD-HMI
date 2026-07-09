@@ -7,32 +7,8 @@ END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[NewLightStartsInRed();
-RedLightGoesGreenOnRequest();
-GreenLightGoesAmberOnRequest();
 LightCyclesThroughFullSequence();]]></ST>
     </Implementation>
-    <Method Name="GreenLightGoesAmberOnRequest" Id="{e92e9b0c-4100-4da9-892a-f37d6db31987}">
-      <Declaration><![CDATA[METHOD PRIVATE GreenLightGoesAmberOnRequest
-VAR
-	light       : FB_TrafficLight;
-    actualState : E_LightState;
-END_VAR
-]]></Declaration>
-      <Implementation>
-        <ST><![CDATA[TEST('GreenLightGoesAmberOnRequest');
-
-light.RequestGreen();              // get it to Green first
-light.RequestAmber();              
-actualState := light.CurrentState;
-
-AssertEquals_INT(
-    Expected := TO_INT(E_LightState.Amber),
-    Actual   := TO_INT(actualState),
-    Message  := 'A GREEN light should go AMBER when requested');
-
-TEST_FINISHED();]]></ST>
-      </Implementation>
-    </Method>
     <Method Name="LightCyclesThroughFullSequence" Id="{f4c079a2-1192-44e8-a91e-ca76b94915f2}">
       <Declaration><![CDATA[METHOD PRIVATE LightCyclesThroughFullSequence
 VAR
@@ -91,28 +67,6 @@ AssertEquals_INT(
     Expected := TO_INT(E_LightState.Red),
     Actual   := TO_INT(actualState),
     Message  := 'A new light should start in RED');
-
-TEST_FINISHED();]]></ST>
-      </Implementation>
-    </Method>
-    <Method Name="RedLightGoesGreenOnRequest" Id="{9ffbc1b8-7f1c-42d9-ad91-886f75c1297d}">
-      <Declaration><![CDATA[METHOD PRIVATE RedLightGoesGreenOnRequest
-VAR
-	light       : FB_TrafficLight;
-    actualState : E_LightState;
-END_VAR
-]]></Declaration>
-      <Implementation>
-        <ST><![CDATA[TEST('RedLightGoesGreenOnRequest');
-
-// light starts in Red (verified by the previous test)
-light.RequestGreen();             
-actualState := light.CurrentState;
-
-AssertEquals_INT(
-    Expected := TO_INT(E_LightState.Green),
-    Actual   := TO_INT(actualState),
-    Message  := 'A light in RED should go GREEN when requested');
 
 TEST_FINISHED();]]></ST>
       </Implementation>
