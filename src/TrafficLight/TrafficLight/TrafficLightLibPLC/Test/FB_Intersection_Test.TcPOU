@@ -6,8 +6,57 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[NewIntersectionStartsInAllRed();]]></ST>
+      <ST><![CDATA[NewIntersectionStartsInAllRed();
+IntersectionAdvancesThroughPhasesInOrder();]]></ST>
     </Implementation>
+    <Method Name="IntersectionAdvancesThroughPhasesInOrder" Id="{5843715c-18fa-49a6-a054-df0239c4a384}">
+      <Declaration><![CDATA[METHOD PRIVATE IntersectionAdvancesThroughPhasesInOrder
+VAR
+	intersection : FB_Intersection;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[TEST('IntersectionAdvancesThroughPhasesInOrder');
+
+// starts AllRed
+AssertEquals_INT(
+    Expected := TO_INT(E_Phase.AllRed),
+    Actual   := TO_INT(intersection.CurrentPhase),
+    Message  := 'Should start AllRed');
+
+intersection.Advance();           
+AssertEquals_INT(
+    Expected := TO_INT(E_Phase.NorthSouthFlowing),
+    Actual   := TO_INT(intersection.CurrentPhase),
+    Message  := 'AllRed should advance to NorthSouthFlowing');
+
+intersection.Advance();
+AssertEquals_INT(
+    Expected := TO_INT(E_Phase.NorthSouthClearing),
+    Actual   := TO_INT(intersection.CurrentPhase),
+    Message  := 'NorthSouthFlowing should advance to NorthSouthClearing');
+
+intersection.Advance();
+AssertEquals_INT(
+    Expected := TO_INT(E_Phase.EastWestFlowing),
+    Actual   := TO_INT(intersection.CurrentPhase),
+    Message  := 'NorthSouthClearing should advance to EastWestFlowing');
+
+intersection.Advance();
+AssertEquals_INT(
+    Expected := TO_INT(E_Phase.EastWestClearing),
+    Actual   := TO_INT(intersection.CurrentPhase),
+    Message  := 'EastWestFlowing should advance to EastWestClearing');
+
+intersection.Advance();
+AssertEquals_INT(
+    Expected := TO_INT(E_Phase.NorthSouthFlowing),
+    Actual   := TO_INT(intersection.CurrentPhase),
+    Message  := 'EastWestClearing should wrap to NorthSouthFlowing (not AllRed)');
+
+TEST_FINISHED();]]></ST>
+      </Implementation>
+    </Method>
     <Method Name="NewIntersectionStartsInAllRed" Id="{70909ec8-d067-4845-976a-244e0c3b0421}">
       <Declaration><![CDATA[METHOD PRIVATE NewIntersectionStartsInAllRed
 VAR

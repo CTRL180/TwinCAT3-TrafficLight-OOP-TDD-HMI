@@ -9,6 +9,17 @@ END_VAR
     <Implementation>
       <ST><![CDATA[]]></ST>
     </Implementation>
+    <Method Name="Advance" Id="{bdb8fcda-c6d7-40a4-85ce-59097b5ad1f7}">
+      <Declaration><![CDATA[METHOD PUBLIC Advance
+VAR
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// Normal-mode behavior for now.
+// A control-mode CASE (Emergency, NightFlash, Manual) would wrap this later.
+RunNormalCycle();]]></ST>
+      </Implementation>
+    </Method>
     <Property Name="CurrentPhase" Id="{51a0cff2-4575-44fb-abb8-3f8e1e191446}">
       <Declaration><![CDATA[PROPERTY CurrentPhase : E_Phase]]></Declaration>
       <Get Name="Get" Id="{491615fe-6f28-44e3-a74d-1231442b9920}">
@@ -16,9 +27,35 @@ END_VAR
 END_VAR
 ]]></Declaration>
         <Implementation>
-          <ST><![CDATA[]]></ST>
+          <ST><![CDATA[CurrentPhase := _phase;]]></ST>
         </Implementation>
       </Get>
     </Property>
+    <Method Name="RunNormalCycle" Id="{49c2bdac-7879-4d9e-8937-f658ecf7a5df}">
+      <Declaration><![CDATA[METHOD PRIVATE RunNormalCycle
+VAR
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[CASE _phase OF
+
+    E_Phase.AllRed:
+        _phase := E_Phase.NorthSouthFlowing;
+
+    E_Phase.NorthSouthFlowing:
+        _phase := E_Phase.NorthSouthClearing;
+
+    E_Phase.NorthSouthClearing:
+        _phase := E_Phase.EastWestFlowing;
+
+    E_Phase.EastWestFlowing:
+        _phase := E_Phase.EastWestClearing;
+
+    E_Phase.EastWestClearing:
+        _phase := E_Phase.NorthSouthFlowing;  
+
+END_CASE]]></ST>
+      </Implementation>
+    </Method>
   </POU>
 </TcPlcObject>
