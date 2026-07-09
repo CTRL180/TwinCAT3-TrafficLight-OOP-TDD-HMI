@@ -21,16 +21,14 @@ END_VAR
           <ST><![CDATA[CurrentState := _state;]]></ST>
         </Implementation>
       </Get>
-    </Property>
-    <Method Name="SetState" Id="{e5f6fe81-7167-4ec4-ba5e-79a96387599e}">
-      <Declaration><![CDATA[METHOD PUBLIC SetState
-VAR_INPUT
-	newState : E_LightState;
+      <Set Name="Set" Id="{3b1b0f1f-54bf-4b47-b141-16b591de05a5}">
+        <Declaration><![CDATA[VAR
 END_VAR
 ]]></Declaration>
-      <Implementation>
-        <ST><![CDATA[_state := newState;]]></ST>
-      </Implementation>
-    </Method>
+        <Implementation>
+          <ST><![CDATA[_state := CurrentState;]]></ST>
+        </Implementation>
+      </Set>
+    </Property>
   </POU>
 </TcPlcObject>

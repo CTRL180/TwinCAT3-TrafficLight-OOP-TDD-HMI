@@ -6,8 +6,7 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[NewLightStartsInRed();
-LightCyclesThroughFullSequence();]]></ST>
+      <ST><![CDATA[NewLightStartsInRed();]]></ST>
     </Implementation>
     <Method Name="NewLightStartsInRed" Id="{870cd3fb-b52e-4f56-bf23-b9ba4841ad63}">
       <Declaration><![CDATA[METHOD PRIVATE NewLightStartsInRed
