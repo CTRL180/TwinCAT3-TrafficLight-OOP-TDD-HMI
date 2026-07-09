@@ -4,8 +4,14 @@
     <Declaration><![CDATA[FUNCTION_BLOCK FB_Intersection
 VAR
 	_phase : E_Phase := E_Phase.AllRed;
-	_nsLight : FB_TrafficLight;
-    _ewLight : FB_TrafficLight;
+
+    // Concrete instances — these actually own the light objects
+    _nsLightImpl : FB_TrafficLight;
+    _ewLightImpl : FB_TrafficLight;
+
+    // Interface references — the intersection talks to lights via the contract
+    _nsLight : ITrafficLight;
+    _ewLight : ITrafficLight;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -76,6 +82,19 @@ END_VAR
         </Implementation>
       </Get>
     </Property>
+    <Method Name="FB_init" Id="{bf28138a-dec2-4334-9ac1-1994ca97fde8}">
+      <Declaration><![CDATA[METHOD FB_init : BOOL
+VAR_INPUT
+	bInitRetains : BOOL; // if TRUE, the retain variables are initialized (warm start / cold start)
+	bInCopyCode : BOOL;  // if TRUE, the instance afterwards gets moved into the copy code (online change)
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// Point interface references at the concrete instances (runs once, at creation)
+_nsLight := _nsLightImpl;
+_ewLight := _ewLightImpl;]]></ST>
+      </Implementation>
+    </Method>
     <Property Name="NorthSouthState" Id="{9d6778a6-7c76-4503-876a-525b44455ef7}">
       <Declaration><![CDATA[PROPERTY NorthSouthState : E_LightState]]></Declaration>
       <Get Name="Get" Id="{0e3b2ca8-1bd4-4186-8d53-48c298ad5621}">
