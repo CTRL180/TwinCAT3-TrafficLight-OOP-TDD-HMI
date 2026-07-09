@@ -4,6 +4,8 @@
     <Declaration><![CDATA[FUNCTION_BLOCK FB_Intersection
 VAR
 	_phase : E_Phase := E_Phase.AllRed;
+	_nsLight : FB_TrafficLight;
+    _ewLight : FB_TrafficLight;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -17,7 +19,39 @@ END_VAR
       <Implementation>
         <ST><![CDATA[// Normal-mode behavior for now.
 // A control-mode CASE (Emergency, NightFlash, Manual) would wrap this later.
-RunNormalCycle();]]></ST>
+RunNormalCycle();
+ApplyPhaseToLights();]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="ApplyPhaseToLights" Id="{4ea9a396-25b9-4204-ad57-326c4b63df04}">
+      <Declaration><![CDATA[METHOD PRIVATE ApplyPhaseToLights
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[CASE _phase OF
+
+    E_Phase.AllRed:
+        _nsLight.SetState(E_LightState.Red);
+        _ewLight.SetState(E_LightState.Red);
+
+    E_Phase.NorthSouthFlowing:
+        _nsLight.SetState(E_LightState.Green);
+        _ewLight.SetState(E_LightState.Red);
+
+    E_Phase.NorthSouthClearing:
+        _nsLight.SetState(E_LightState.Amber);
+        _ewLight.SetState(E_LightState.Red);
+
+    E_Phase.EastWestFlowing:
+        _nsLight.SetState(E_LightState.Red);
+        _ewLight.SetState(E_LightState.Green);
+
+    E_Phase.EastWestClearing:
+        _nsLight.SetState(E_LightState.Red);
+        _ewLight.SetState(E_LightState.Amber);
+
+END_CASE]]></ST>
       </Implementation>
     </Method>
     <Property Name="CurrentPhase" Id="{51a0cff2-4575-44fb-abb8-3f8e1e191446}">
@@ -28,6 +62,28 @@ END_VAR
 ]]></Declaration>
         <Implementation>
           <ST><![CDATA[CurrentPhase := _phase;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Property Name="EastWestState" Id="{eaaaaa52-e805-400d-a3c8-7f085e87c6f9}">
+      <Declaration><![CDATA[PROPERTY EastWestState : E_LightState]]></Declaration>
+      <Get Name="Get" Id="{9cf8c84d-4971-4fcd-b25b-2b4795173e14}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[EastWestState := _ewLight.CurrentState;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Property Name="NorthSouthState" Id="{9d6778a6-7c76-4503-876a-525b44455ef7}">
+      <Declaration><![CDATA[PROPERTY NorthSouthState : E_LightState]]></Declaration>
+      <Get Name="Get" Id="{0e3b2ca8-1bd4-4186-8d53-48c298ad5621}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[NorthSouthState := _nsLight.CurrentState;]]></ST>
         </Implementation>
       </Get>
     </Property>
