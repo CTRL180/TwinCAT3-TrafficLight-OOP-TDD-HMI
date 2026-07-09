@@ -22,5 +22,14 @@ END_VAR
         </Implementation>
       </Get>
     </Property>
+    <Method Name="RequestGreen" Id="{7eadf869-ec5e-4e0c-9426-0678f3962762}">
+      <Declaration><![CDATA[METHOD PUBLIC RequestGreen
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[_state := E_LightState.Green;]]></ST>
+      </Implementation>
+    </Method>
   </POU>
 </TcPlcObject>

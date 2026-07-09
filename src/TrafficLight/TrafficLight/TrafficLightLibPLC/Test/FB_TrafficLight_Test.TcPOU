@@ -6,7 +6,8 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[NewLightStartsInRed();]]></ST>
+      <ST><![CDATA[NewLightStartsInRed();
+RedLightGoesGreenOnRequest();]]></ST>
     </Implementation>
     <Method Name="NewLightStartsInRed" Id="{870cd3fb-b52e-4f56-bf23-b9ba4841ad63}">
       <Declaration><![CDATA[METHOD PRIVATE NewLightStartsInRed
@@ -24,6 +25,28 @@ AssertEquals_INT(
     Expected := TO_INT(E_LightState.Red),
     Actual   := TO_INT(actualState),
     Message  := 'A new light should start in RED');
+
+TEST_FINISHED();]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="RedLightGoesGreenOnRequest" Id="{9ffbc1b8-7f1c-42d9-ad91-886f75c1297d}">
+      <Declaration><![CDATA[METHOD PRIVATE RedLightGoesGreenOnRequest
+VAR
+	light       : FB_TrafficLight;
+    actualState : E_LightState;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[TEST('RedLightGoesGreenOnRequest');
+
+// light starts in Red (verified by the previous test)
+light.RequestGreen();             
+actualState := light.CurrentState;
+
+AssertEquals_INT(
+    Expected := TO_INT(E_LightState.Green),
+    Actual   := TO_INT(actualState),
+    Message  := 'A light in RED should go GREEN when requested');
 
 TEST_FINISHED();]]></ST>
       </Implementation>
