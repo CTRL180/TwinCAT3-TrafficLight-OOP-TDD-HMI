@@ -45,5 +45,15 @@ END_VAR
 END_CASE]]></ST>
       </Implementation>
     </Method>
+    <Method Name="SetState" Id="{e5f6fe81-7167-4ec4-ba5e-79a96387599e}">
+      <Declaration><![CDATA[METHOD PUBLIC SetState
+VAR_INPUT
+	newState : E_LightState;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[_state := newState;]]></ST>
+      </Implementation>
+    </Method>
   </POU>
 </TcPlcObject>
