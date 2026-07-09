@@ -9,48 +9,6 @@ END_VAR
       <ST><![CDATA[NewLightStartsInRed();
 LightCyclesThroughFullSequence();]]></ST>
     </Implementation>
-    <Method Name="LightCyclesThroughFullSequence" Id="{f4c079a2-1192-44e8-a91e-ca76b94915f2}">
-      <Declaration><![CDATA[METHOD PRIVATE LightCyclesThroughFullSequence
-VAR
-	light : FB_TrafficLight;
-END_VAR
-]]></Declaration>
-      <Implementation>
-        <ST><![CDATA[TEST('LightCyclesThroughFullSequence');
-
-// starts in Red
-AssertEquals_INT(
-    Expected := TO_INT(E_LightState.Red),
-    Actual   := TO_INT(light.CurrentState),
-    Message  := 'Should start RED');
-
-light.Cycle();                    
-AssertEquals_INT(
-    Expected := TO_INT(E_LightState.RedAmber),
-    Actual   := TO_INT(light.CurrentState),
-    Message  := 'Red should advance to RedAmber');
-
-light.Cycle();
-AssertEquals_INT(
-    Expected := TO_INT(E_LightState.Green),
-    Actual   := TO_INT(light.CurrentState),
-    Message  := 'RedAmber should advance to Green');
-
-light.Cycle();
-AssertEquals_INT(
-    Expected := TO_INT(E_LightState.Amber),
-    Actual   := TO_INT(light.CurrentState),
-    Message  := 'Green should advance to Amber');
-
-light.Cycle();
-AssertEquals_INT(
-    Expected := TO_INT(E_LightState.Red),
-    Actual   := TO_INT(light.CurrentState),
-    Message  := 'Amber should wrap back to Red');
-
-TEST_FINISHED();]]></ST>
-      </Implementation>
-    </Method>
     <Method Name="NewLightStartsInRed" Id="{870cd3fb-b52e-4f56-bf23-b9ba4841ad63}">
       <Declaration><![CDATA[METHOD PRIVATE NewLightStartsInRed
 VAR

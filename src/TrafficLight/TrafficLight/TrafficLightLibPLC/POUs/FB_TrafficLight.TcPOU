@@ -22,29 +22,6 @@ END_VAR
         </Implementation>
       </Get>
     </Property>
-    <Method Name="Cycle" Id="{eb10b806-57f1-4643-9295-d5935dbe7d30}">
-      <Declaration><![CDATA[METHOD PUBLIC Cycle
-VAR
-END_VAR
-]]></Declaration>
-      <Implementation>
-        <ST><![CDATA[CASE _state OF
-
-    E_LightState.Red:
-        _state := E_LightState.RedAmber;
-
-    E_LightState.RedAmber:
-        _state := E_LightState.Green;
-
-    E_LightState.Green:
-        _state := E_LightState.Amber;
-
-    E_LightState.Amber:
-        _state := E_LightState.Red;
-
-END_CASE]]></ST>
-      </Implementation>
-    </Method>
     <Method Name="SetState" Id="{e5f6fe81-7167-4ec4-ba5e-79a96387599e}">
       <Declaration><![CDATA[METHOD PUBLIC SetState
 VAR_INPUT

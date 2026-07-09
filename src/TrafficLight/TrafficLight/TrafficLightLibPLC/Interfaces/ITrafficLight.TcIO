@@ -9,11 +9,5 @@
         <Declaration><![CDATA[]]></Declaration>
       </Get>
     </Property>
-    <Method Name="Cycle" Id="{892fb504-fa89-4974-8c21-d7396bf0d00e}">
-      <Declaration><![CDATA[METHOD Cycle
-VAR
-END_VAR
-]]></Declaration>
-    </Method>
   </Itf>
 </TcPlcObject>
