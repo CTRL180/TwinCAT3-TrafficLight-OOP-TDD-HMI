@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <DUT Name="E_Phase" Id="{dc9b695b-afb9-4d4f-bbfa-27ea0652b565}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'strict'}
+TYPE E_Phase :
+(
+    AllRed,                 // startup and clearance — the safe state
+    NorthSouthFlowing,
+    NorthSouthClearing,
+    EastWestFlowing,
+    EastWestClearing
+) := AllRed;
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_Intersection_Test" Id="{c110743a-9204-448b-b4a8-3ebea3fe05df}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_Intersection_Test EXTENDS TcUnit.FB_TestSuite
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[NewIntersectionStartsInAllRed();]]></ST>
+    </Implementation>
+    <Method Name="NewIntersectionStartsInAllRed" Id="{70909ec8-d067-4845-976a-244e0c3b0421}">
+      <Declaration><![CDATA[METHOD PRIVATE NewIntersectionStartsInAllRed
+VAR
+	intersection : FB_Intersection;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[TEST('NewIntersectionStartsInAllRed');
+
+AssertEquals_INT(
+    Expected := TO_INT(E_Phase.AllRed),
+    Actual   := TO_INT(intersection.CurrentPhase),
+    Message  := 'A new intersection should start in AllRed for safety');
+
+TEST_FINISHED();]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>

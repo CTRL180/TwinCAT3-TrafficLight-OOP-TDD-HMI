@@ -4,6 +4,7 @@
     <Declaration><![CDATA[PROGRAM PRG_TEST
 VAR
 	fbTrafficLightTest : FB_TrafficLight_Test;
+	fbIntersectionTest  : FB_Intersection_Test;
 END_VAR
 ]]></Declaration>
     <Implementation>

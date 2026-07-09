@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_Intersection" Id="{e5cfebb4-1149-4b39-adfb-333fbff08c59}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_Intersection
+VAR
+	_phase : E_Phase := E_Phase.AllRed;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Property Name="CurrentPhase" Id="{51a0cff2-4575-44fb-abb8-3f8e1e191446}">
+      <Declaration><![CDATA[PROPERTY CurrentPhase : E_Phase]]></Declaration>
+      <Get Name="Get" Id="{491615fe-6f28-44e3-a74d-1231442b9920}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+  </POU>
+</TcPlcObject>
