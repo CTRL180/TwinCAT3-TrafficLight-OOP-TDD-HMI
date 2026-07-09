@@ -7,7 +7,9 @@ END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[NewIntersectionStartsInAllRed();
-IntersectionAdvancesThroughPhasesInOrder();]]></ST>
+IntersectionAdvancesThroughPhasesInOrder();
+NorthSouthFlowingShowsNsGreenEwRed();
+NeverTwoGreensAcrossFullCycle();]]></ST>
     </Implementation>
     <Method Name="IntersectionAdvancesThroughPhasesInOrder" Id="{5843715c-18fa-49a6-a054-df0239c4a384}">
       <Declaration><![CDATA[METHOD PRIVATE IntersectionAdvancesThroughPhasesInOrder
@@ -57,6 +59,33 @@ AssertEquals_INT(
 TEST_FINISHED();]]></ST>
       </Implementation>
     </Method>
+    <Method Name="NeverTwoGreensAcrossFullCycle" Id="{483527da-3675-4dea-b5ff-c586d75218b1}">
+      <Declaration><![CDATA[METHOD PRIVATE NeverTwoGreensAcrossFullCycle
+VAR
+	intersection : FB_Intersection;
+    i            : INT;
+    nsGreen      : BOOL;
+    ewGreen      : BOOL;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[TEST('NeverTwoGreensAcrossFullCycle');
+
+// Walk several full cycles; the safety rule must hold at every step.
+FOR i := 1 TO 12 DO
+    intersection.Advance();
+
+    nsGreen := (intersection.NorthSouthState = E_LightState.Green);
+    ewGreen := (intersection.EastWestState  = E_LightState.Green);
+
+    AssertFalse(
+        Condition := (nsGreen AND ewGreen),
+        Message   := 'Both directions must never be green at once');
+END_FOR
+
+TEST_FINISHED();]]></ST>
+      </Implementation>
+    </Method>
     <Method Name="NewIntersectionStartsInAllRed" Id="{70909ec8-d067-4845-976a-244e0c3b0421}">
       <Declaration><![CDATA[METHOD PRIVATE NewIntersectionStartsInAllRed
 VAR
@@ -70,6 +99,30 @@ AssertEquals_INT(
     Expected := TO_INT(E_Phase.AllRed),
     Actual   := TO_INT(intersection.CurrentPhase),
     Message  := 'A new intersection should start in AllRed for safety');
+
+TEST_FINISHED();]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="NorthSouthFlowingShowsNsGreenEwRed" Id="{f2df457c-c78c-4463-bda3-4fad76f93f44}">
+      <Declaration><![CDATA[METHOD PRIVATE NorthSouthFlowingShowsNsGreenEwRed
+VAR
+	intersection : FB_Intersection;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[TEST('NorthSouthFlowingShowsNsGreenEwRed');
+
+intersection.Advance();   // AllRed -> NorthSouthFlowing
+
+AssertEquals_INT(
+    Expected := TO_INT(E_LightState.Green),
+    Actual   := TO_INT(intersection.NorthSouthState),
+    Message  := 'NS should be GREEN in NorthSouthFlowing');
+
+AssertEquals_INT(
+    Expected := TO_INT(E_LightState.Red),
+    Actual   := TO_INT(intersection.EastWestState),
+    Message  := 'EW should be RED in NorthSouthFlowing');
 
 TEST_FINISHED();]]></ST>
       </Implementation>
