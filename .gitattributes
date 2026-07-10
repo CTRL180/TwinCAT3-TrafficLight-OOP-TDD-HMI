@@ -61,3 +61,21 @@
 #*.PDF   diff=astextplain
 #*.rtf   diff=astextplain
 #*.RTF   diff=astextplain
+
+# --- Language classification for GitHub's Linguist ---
+
+# Treat TwinCAT source files as Pascal (closest relative to Structured Text)
+*.TcPOU   linguist-language=Pascal
+*.TcDUT   linguist-language=Pascal
+*.TcGVL   linguist-language=Pascal
+*.TcIO    linguist-language=Pascal
+*.TcTTO   linguist-language=Pascal
+
+# Mark these as the primary detectable source, not just vendored
+*.TcPOU   linguist-detectable=true
+*.TcDUT   linguist-detectable=true
+
+# Don't let HMI CSS/templates and docs dominate the language stats
+*.css                    linguist-vendored=true
+docs/**                  linguist-documentation=true
+**/*.Compiled.Style.css  linguist-generated=true
