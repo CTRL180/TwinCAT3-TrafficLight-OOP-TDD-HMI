@@ -17,6 +17,9 @@
     <Implicit_Jitter_Distribution>{5d4e733d-fa47-4e37-8577-75303a7cf73a}</Implicit_Jitter_Distribution>
     <LibraryReferences>{b3da1d61-8367-4bba-a72a-7b8cb9719e53}</LibraryReferences>
     <Released>false</Released>
+    <Title>TrafficControlLib</Title>
+    <ProjectVersion>0.1.0</ProjectVersion>
+    <Company>TrafficLightProject AG</Company>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="DUTs\E_LightState.TcDUT">

@@ -1,13 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1">
-  <POU Name="MAIN" Id="{7d9e93e5-9bb5-44fa-aa35-8d8935fc199d}">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="MAIN" Id="{7d9e93e5-9bb5-44fa-aa35-8d8935fc199d}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
+	fbIntersection : FB_Intersection;
+    tonAdvance     : TON;                        // timer between phase advances
+    PHASE_TIME     : TIME := T#5S;               // how long each phase lasts
 END_VAR
-]]>
-    </Declaration>
+]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[// Self-resetting timer pulse: fires every PHASE_TIME
+tonAdvance(IN := NOT tonAdvance.Q, PT := PHASE_TIME);
+
+IF (tonAdvance.Q) THEN
+    fbIntersection.Advance();
+END_IF]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>
