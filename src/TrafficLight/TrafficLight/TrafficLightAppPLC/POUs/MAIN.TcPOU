@@ -17,7 +17,8 @@ IF (tonAdvance.Q) THEN
 END_IF
 
 // Manual advance from HMI (edge-detected inside the intersection)
-fbIntersection.Update(bManualStepRequest := bManualAdvance);]]></ST>
+fbIntersection.Update(bManualStepRequest := bManualAdvance);
+bManualAdvance := FALSE;]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>
