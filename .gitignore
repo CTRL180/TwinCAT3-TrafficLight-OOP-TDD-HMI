@@ -58,3 +58,15 @@ LineIDs.dbg.bak
 
 # TwinCAT Measurement
 *.vsm
+
+# TwinCAT HMI (TE2000)
+**/.engineering_servers/
+**/liveview_*
+**/*.cache
+**/*.db-shm
+**/*.db-wal
+**/*.pid
+**/.hmiframework/
+**/.hmipkgs/*-*-*-*/
+**/tchmipublish.journal.json
+**/Packages/
