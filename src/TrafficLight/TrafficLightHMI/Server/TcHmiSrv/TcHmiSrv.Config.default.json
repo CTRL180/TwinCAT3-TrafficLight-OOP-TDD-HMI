@@ -2578,6 +2578,23 @@
             },
             "USEMAPPING": true
         },
+        "PLC1.MAIN.bManualAdvance": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::MAIN::bManualAdvance",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/BOOL"
+                    },
+                    {
+                        "comment": "HMI button"
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
         "PLC1.MAIN.fbIntersection._ewLightImpl._state": {
             "ACCESS": 3,
             "DOMAIN": "ADS",
@@ -3531,6 +3548,7 @@
                 "LocalizeText": 3,
                 "Login": 3,
                 "Logout": 3,
+                "PLC1.MAIN.bManualAdvance": 3,
                 "PLC1.MAIN.fbIntersection._ewLightImpl._state": 3,
                 "PLC1.MAIN.fbIntersection._nsLightImpl._state": 3,
                 "PLC1.MAIN.fbIntersection._phase": 3,

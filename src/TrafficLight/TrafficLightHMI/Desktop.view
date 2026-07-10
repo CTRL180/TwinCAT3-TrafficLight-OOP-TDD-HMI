@@ -414,10 +414,36 @@
 </script>
 </div>
 <div id="GreenEW" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiEllipse" data-tchmi-height="57" data-tchmi-height-unit="px" data-tchmi-left="608" data-tchmi-left-unit="px" data-tchmi-top="582" data-tchmi-top-unit="px" data-tchmi-width="57" data-tchmi-width-unit="px" data-tchmi-zindex="3">
+
+
+
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-background-color" type="application/json">
+{
+  "color": "None"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-color" type="application/json">
+{
+  "color": "None"
+}
+</script>
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-fill-color" type="application/json">
+{
+  "color": "rgba(0, 0, 0, 1)"
+}
+</script>
+
 <script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
 [
   {
-    "event": "%s%PLC1.MAIN.fbIntersection._nsLightImpl._state%/s%",
+    "event": "%s%PLC1.MAIN.fbIntersection._ewLightImpl._state%/s%",
     "actions": [
       {
         "objectType": "Condition",
@@ -480,6 +506,9 @@
   }
 ]
 </script>
+</div>
+<div id="YellowEW" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiEllipse" data-tchmi-height="57" data-tchmi-height-unit="px" data-tchmi-left="608" data-tchmi-left-unit="px" data-tchmi-top="515" data-tchmi-top-unit="px" data-tchmi-width="57" data-tchmi-width-unit="px" data-tchmi-zindex="4">
+
 
 
 
@@ -504,12 +533,11 @@
   "color": "rgba(0, 0, 0, 1)"
 }
 </script>
-</div>
-<div id="YellowEW" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiEllipse" data-tchmi-height="57" data-tchmi-height-unit="px" data-tchmi-left="608" data-tchmi-left-unit="px" data-tchmi-top="515" data-tchmi-top-unit="px" data-tchmi-width="57" data-tchmi-width-unit="px" data-tchmi-zindex="3">
+
 <script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
 [
   {
-    "event": "%s%PLC1.MAIN.fbIntersection._nsLightImpl._state%/s%",
+    "event": "%s%PLC1.MAIN.fbIntersection._ewLightImpl._state%/s%",
     "actions": [
       {
         "objectType": "Condition",
@@ -541,7 +569,7 @@
                   "objectType": "StaticValue",
                   "valueType": "tchmi:framework#/definitions/Color",
                   "value": {
-                    "color": "rgba(229, 249, 10, 1)"
+                    "color": "rgba(249, 249, 10, 1)"
                   }
                 },
                 "asyncWait": true
@@ -558,7 +586,7 @@
                   "objectType": "StaticValue",
                   "valueType": "tchmi:framework#/definitions/Color",
                   "value": {
-                    "color": "rgba(0, 0, 0, 1)"
+                    "color": "rgba(15, 14, 14, 1)"
                   }
                 },
                 "asyncWait": true
@@ -571,30 +599,6 @@
     ]
   }
 ]
-</script>
-
-
-
-
-
-<script data-tchmi-target-attribute="data-tchmi-background-color" type="application/json">
-{
-  "color": "None"
-}
-</script>
-
-<script data-tchmi-target-attribute="data-tchmi-border-color" type="application/json">
-{
-  "color": "None"
-}
-</script>
-
-
-
-<script data-tchmi-target-attribute="data-tchmi-fill-color" type="application/json">
-{
-  "color": "rgba(0, 0, 0, 1)"
-}
 </script>
 </div>
 <div id="TcHmiEllipse_1" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiEllipse" data-tchmi-height="252" data-tchmi-height-unit="px" data-tchmi-left="570" data-tchmi-left-unit="px" data-tchmi-top="415" data-tchmi-top-unit="px" data-tchmi-width="135" data-tchmi-width-unit="px" data-tchmi-zindex="0" data-tchmi-stroke-thickness="10">
@@ -716,6 +720,37 @@
 {
   "color": "rgba(6, 6, 6, 1)"
 }
+</script>
+</div>
+<div id="ManualAdvanceButton" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiButton" data-tchmi-height="73" data-tchmi-height-unit="px" data-tchmi-left="641" data-tchmi-left-unit="px" data-tchmi-text="Advance" data-tchmi-top="178" data-tchmi-top-unit="px" data-tchmi-width="138" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-font-size="20">
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(15, 14, 14, 1)"
+}
+</script>
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "ManualAdvanceButton.onPressed",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%s%PLC1.MAIN.bManualAdvance%/s%",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:general#/definitions/String",
+          "value": "TRUE"
+        },
+        "asyncWait": true
+      }
+    ]
+  }
+]
 </script>
 </div>
 </div>
