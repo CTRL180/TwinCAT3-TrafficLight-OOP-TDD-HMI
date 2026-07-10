@@ -12,6 +12,9 @@ VAR
     // Interface references — the intersection talks to lights via the contract
     _nsLight : ITrafficLight;
     _ewLight : ITrafficLight;
+	
+	// edge detector for manual advance requests
+	_rtrigManual : R_TRIG;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -130,6 +133,22 @@ END_VAR
         _phase := E_Phase.NorthSouthFlowing;  
 
 END_CASE]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Update" Id="{cc6d44b0-7bbc-456d-8030-9d40388d17d5}">
+      <Declaration><![CDATA[METHOD PUBLIC Update
+VAR_INPUT
+	bManualStepRequest : BOOL;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// A rising edge on the manual request advances the intersection once.
+// Reuses Advance() so phase AND lights update through the single code path.
+_rtrigManual(CLK := bManualStepRequest);
+
+IF (_rtrigManual.Q) THEN
+    Advance();
+END_IF]]></ST>
       </Implementation>
     </Method>
   </POU>

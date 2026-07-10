@@ -46,12 +46,18 @@
     </PlaceholderReference>
     <PlaceholderReference Include="TrafficControlLib">
       <DefaultResolution>TrafficControlLib, * (TrafficLightProject AG)</DefaultResolution>
+      <Namespace>TrafficControlLib</Namespace>
     </PlaceholderReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="TrafficLightAppPLC.tmc">
       <SubType>Content</SubType>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <PlaceholderResolution Include="TrafficControlLib">
+      <Resolution>TrafficControlLib, * (TrafficLightProject AG)</Resolution>
+    </PlaceholderResolution>
   </ItemGroup>
   <ProjectExtensions>
     <PlcProjectOptions>

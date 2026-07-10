@@ -9,7 +9,8 @@ END_VAR
       <ST><![CDATA[NewIntersectionStartsInAllRed();
 IntersectionAdvancesThroughPhasesInOrder();
 NorthSouthFlowingShowsNsGreenEwRed();
-NeverTwoGreensAcrossFullCycle();]]></ST>
+NeverTwoGreensAcrossFullCycle();
+ManualRequestAdvancesPhase();]]></ST>
     </Implementation>
     <Method Name="IntersectionAdvancesThroughPhasesInOrder" Id="{5843715c-18fa-49a6-a054-df0239c4a384}">
       <Declaration><![CDATA[METHOD PRIVATE IntersectionAdvancesThroughPhasesInOrder
@@ -55,6 +56,27 @@ AssertEquals_INT(
     Expected := TO_INT(E_Phase.NorthSouthFlowing),
     Actual   := TO_INT(intersection.CurrentPhase),
     Message  := 'EastWestClearing should wrap to NorthSouthFlowing (not AllRed)');
+
+TEST_FINISHED();]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="ManualRequestAdvancesPhase" Id="{43bcf4b9-21a6-4af9-86c8-80e7268258b5}">
+      <Declaration><![CDATA[METHOD PRIVATE ManualRequestAdvancesPhase
+VAR
+	intersection : FB_Intersection;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[TEST('ManualRequestAdvancesPhase');
+
+// starts in AllRed; simulate a button press (rising edge)
+intersection.Update(bManualStepRequest := FALSE);   // establish low baseline
+intersection.Update(bManualStepRequest := TRUE);    // rising edge -> advance
+
+AssertEquals_INT(
+    Expected := TO_INT(E_Phase.NorthSouthFlowing),
+    Actual   := TO_INT(intersection.CurrentPhase),
+    Message  := 'A manual request should advance out of AllRed');
 
 TEST_FINISHED();]]></ST>
       </Implementation>
