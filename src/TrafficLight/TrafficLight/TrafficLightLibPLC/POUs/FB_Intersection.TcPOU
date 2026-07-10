@@ -136,7 +136,7 @@ END_CASE]]></ST>
       </Implementation>
     </Method>
     <Method Name="Update" Id="{cc6d44b0-7bbc-456d-8030-9d40388d17d5}">
-      <Declaration><![CDATA[METHOD PUBLIC Update
+      <Declaration><![CDATA[METHOD PUBLIC Update : BOOL
 VAR_INPUT
 	bManualStepRequest : BOOL;
 END_VAR
@@ -148,6 +148,9 @@ _rtrigManual(CLK := bManualStepRequest);
 
 IF (_rtrigManual.Q) THEN
     Advance();
+    Update := TRUE;      // report that a manual advance happened
+ELSE
+    Update := FALSE;
 END_IF]]></ST>
       </Implementation>
     </Method>

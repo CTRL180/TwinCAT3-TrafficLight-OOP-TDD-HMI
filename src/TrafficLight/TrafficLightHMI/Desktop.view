@@ -743,8 +743,8 @@
         "symbolExpression": "%s%PLC1.MAIN.bManualAdvance%/s%",
         "value": {
           "objectType": "StaticValue",
-          "valueType": "tchmi:general#/definitions/String",
-          "value": "TRUE"
+          "valueType": "tchmi:general#/definitions/BOOL",
+          "value": true
         },
         "asyncWait": true
       }

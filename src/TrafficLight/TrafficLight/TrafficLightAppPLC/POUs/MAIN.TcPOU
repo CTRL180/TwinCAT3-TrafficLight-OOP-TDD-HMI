@@ -6,19 +6,26 @@ VAR
 	fbIntersection : FB_Intersection;
     tonAdvance     : TON;                        // timer between phase advances
     PHASE_TIME     : TIME := T#5S;               // how long each phase lasts
-	bManualAdvance : BOOL := FALSE;			     // HMI button
+    bManualAdvance    : BOOL := FALSE;   		// written by HMI button
+    bManualDidAdvance : BOOL := FALSE;   		// did the manual request advance?
+    bDoAdvance        : BOOL := FALSE;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[// Auto-advance on timer
-tonAdvance(IN := NOT tonAdvance.Q, PT := PHASE_TIME);
+      <ST><![CDATA[// Manual advance (edge-detected inside the intersection); returns TRUE if it advanced
+bManualDidAdvance := fbIntersection.Update(bManualStepRequest := bManualAdvance);
+bManualAdvance := FALSE;   // consume the HMI request
+
+// Reset the timer if it elapsed OR a manual advance just happened
+bDoAdvance := tonAdvance.Q OR bManualDidAdvance;
+
+// Single timer call: IN goes FALSE on either trigger -> restarts the interval
+tonAdvance(IN := NOT bDoAdvance, PT := PHASE_TIME);
+
+// Auto-advance only when the timer itself elapsed
 IF (tonAdvance.Q) THEN
     fbIntersection.Advance();
-END_IF
-
-// Manual advance from HMI (edge-detected inside the intersection)
-fbIntersection.Update(bManualStepRequest := bManualAdvance);
-bManualAdvance := FALSE;]]></ST>
+END_IF]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>

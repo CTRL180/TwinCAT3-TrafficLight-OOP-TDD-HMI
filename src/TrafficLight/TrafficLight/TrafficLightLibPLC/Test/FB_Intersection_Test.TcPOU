@@ -10,7 +10,9 @@ END_VAR
 IntersectionAdvancesThroughPhasesInOrder();
 NorthSouthFlowingShowsNsGreenEwRed();
 NeverTwoGreensAcrossFullCycle();
-ManualRequestAdvancesPhase();]]></ST>
+ManualRequestAdvancesPhase();
+UpdateReportsTrueWhenItAdvances();
+UpdateReportsFalseWithoutEdge();]]></ST>
     </Implementation>
     <Method Name="IntersectionAdvancesThroughPhasesInOrder" Id="{5843715c-18fa-49a6-a054-df0239c4a384}">
       <Declaration><![CDATA[METHOD PRIVATE IntersectionAdvancesThroughPhasesInOrder
@@ -145,6 +147,45 @@ AssertEquals_INT(
     Expected := TO_INT(E_LightState.Red),
     Actual   := TO_INT(intersection.EastWestState),
     Message  := 'EW should be RED in NorthSouthFlowing');
+
+TEST_FINISHED();]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="UpdateReportsFalseWithoutEdge" Id="{aace1847-9951-4ad7-b1e7-c15698e09ca9}">
+      <Declaration><![CDATA[METHOD PRIVATE UpdateReportsFalseWithoutEdge
+VAR
+	intersection : FB_Intersection;
+    didAdvance   : BOOL;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[TEST('UpdateReportsFalseWithoutEdge');
+
+didAdvance := intersection.Update(bManualStepRequest := FALSE);  // no request
+
+AssertFalse(
+    Condition := didAdvance,
+    Message   := 'Update should report FALSE when there is no manual request');
+
+TEST_FINISHED();]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="UpdateReportsTrueWhenItAdvances" Id="{beb0b23f-7737-4ef8-b507-a6a2e8881dd7}">
+      <Declaration><![CDATA[METHOD PRIVATE UpdateReportsTrueWhenItAdvances
+VAR
+	intersection : FB_Intersection;
+    didAdvance   : BOOL;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[TEST('UpdateReportsTrueWhenItAdvances');
+
+intersection.Update(bManualStepRequest := FALSE);              // baseline low
+didAdvance := intersection.Update(bManualStepRequest := TRUE); // rising edge
+
+AssertTrue(
+    Condition := didAdvance,
+    Message   := 'Update should report TRUE on the scan it advances');
 
 TEST_FINISHED();]]></ST>
       </Implementation>
