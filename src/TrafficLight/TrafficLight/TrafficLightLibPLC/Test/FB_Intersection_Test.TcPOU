@@ -12,7 +12,8 @@ NorthSouthFlowingShowsNsGreenEwRed();
 NeverTwoGreensAcrossFullCycle();
 ManualRequestAdvancesPhase();
 UpdateReportsTrueWhenItAdvances();
-UpdateReportsFalseWithoutEdge();]]></ST>
+UpdateReportsFalseWithoutEdge();
+IntersectionCommandsInjectedLights();]]></ST>
     </Implementation>
     <Method Name="IntersectionAdvancesThroughPhasesInOrder" Id="{5843715c-18fa-49a6-a054-df0239c4a384}">
       <Declaration><![CDATA[METHOD PRIVATE IntersectionAdvancesThroughPhasesInOrder
@@ -60,6 +61,35 @@ AssertEquals_INT(
     Expected := TO_INT(E_Phase.NorthSouthFlowing),
     Actual   := TO_INT(intersection.CurrentPhase),
     Message  := 'EastWestClearing should wrap to NorthSouthFlowing (not AllRed)');
+
+TEST_FINISHED();]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="IntersectionCommandsInjectedLights" Id="{54071131-8bfc-466c-b289-8d7fbc1cad13}">
+      <Declaration><![CDATA[METHOD PRIVATE IntersectionCommandsInjectedLights
+VAR
+	nsMock       : FB_MockLight;
+    ewMock       : FB_MockLight;
+    intersection : FB_Intersection(nsLight := nsMock, ewLight := ewMock);
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[TEST('IntersectionCommandsInjectedLights');
+
+// Advance out of AllRed into NorthSouthFlowing
+intersection.Advance();
+
+// The intersection should have commanded the MOCK lights:
+// NS green, EW red — verified by inspecting what the mocks were told
+AssertEquals_INT(
+    Expected := TO_INT(E_LightState.Green),
+    Actual   := TO_INT(nsMock.CurrentState),
+    Message  := 'NS mock should have been commanded GREEN');
+
+AssertEquals_INT(
+    Expected := TO_INT(E_LightState.Red),
+    Actual   := TO_INT(ewMock.CurrentState),
+    Message  := 'EW mock should have been commanded RED');
 
 TEST_FINISHED();]]></ST>
       </Implementation>

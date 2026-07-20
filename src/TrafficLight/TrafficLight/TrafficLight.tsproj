@@ -36,7 +36,7 @@
 				</Instance>
 			</Project>
 			<Project GUID="{F4471DA3-7351-4F03-8132-D255425A178E}" Name="TrafficLightLibPLC" PrjFilePath="TrafficLightLibPLC\TrafficLightLibPLC.plcproj" TmcFilePath="TrafficLightLibPLC\TrafficLightLibPLC.tmc" ReloadTmc="true" AmsPort="852" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502040" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="TrafficLightLibPLC\TrafficLightLibPLC.tmc" TmcHash="{FFE139D3-3DF2-6D67-C1F4-A71D66A59100}">
+				<Instance Id="#x08502040" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="TrafficLightLibPLC\TrafficLightLibPLC.tmc" TmcHash="{AEBA9067-5BF5-5A75-8194-DD66F942B810}">
 					<Name>TrafficLightLibPLC Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Contexts>
