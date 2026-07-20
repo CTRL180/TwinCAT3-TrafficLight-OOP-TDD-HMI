@@ -18,7 +18,7 @@
     <LibraryReferences>{b3da1d61-8367-4bba-a72a-7b8cb9719e53}</LibraryReferences>
     <Released>false</Released>
     <Title>TrafficControlLib</Title>
-    <ProjectVersion>0.3.0</ProjectVersion>
+    <ProjectVersion>0.4.0</ProjectVersion>
     <Company>TrafficLightProject AG</Company>
   </PropertyGroup>
   <ItemGroup>
@@ -41,6 +41,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Test\FB_Intersection_Test.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Test\FB_MockLight.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Test\FB_TrafficLight_Test.TcPOU">

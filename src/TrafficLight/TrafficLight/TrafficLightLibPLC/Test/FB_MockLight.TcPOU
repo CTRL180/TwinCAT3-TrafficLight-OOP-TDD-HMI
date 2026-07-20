@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_MockLight" Id="{ce876cf4-4d9e-4288-9c08-708936bdc733}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_MockLight IMPLEMENTS ITrafficLight
+VAR
+	_state : E_LightState := E_LightState.Red;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Property Name="CurrentState" Id="{265faf78-6272-4558-8004-185fb6de5390}">
+      <Declaration><![CDATA[{warning 'add property implementation'}
+PROPERTY CurrentState : E_LightState
+]]></Declaration>
+      <Get Name="Get" Id="{146ebe25-a190-4a6b-b422-99f5fa0b7666}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[CurrentState := _state;]]></ST>
+        </Implementation>
+      </Get>
+      <Set Name="Set" Id="{60a51fbc-cea8-48f8-8f09-def3fa75163c}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[_state := CurrentState;]]></ST>
+        </Implementation>
+      </Set>
+    </Property>
+  </POU>
+</TcPlcObject>
