@@ -3,12 +3,14 @@
   <POU Name="MAIN" Id="{7d9e93e5-9bb5-44fa-aa35-8d8935fc199d}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
-	fbIntersection : FB_Intersection;
-    tonAdvance     : TON;                        // timer between phase advances
-    PHASE_TIME     : TIME := T#5S;               // how long each phase lasts
-    bManualAdvance    : BOOL := FALSE;   		// written by HMI button
-    bManualDidAdvance : BOOL := FALSE;   		// did the manual request advance?
-    bDoAdvance        : BOOL := FALSE;
+	nsLight        : FB_TrafficLight;
+    ewLight        : FB_TrafficLight;
+    fbIntersection : FB_Intersection(nsLight := nsLight, ewLight := ewLight);
+    tonAdvance     : TON;
+    PHASE_TIME     : TIME := T#3S;
+    bManualAdvance : BOOL := FALSE;
+    bManualDidAdvance : BOOL := FALSE;
+    bDoAdvance     : BOOL := FALSE;
 END_VAR
 ]]></Declaration>
     <Implementation>

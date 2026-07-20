@@ -3,18 +3,13 @@
   <POU Name="FB_Intersection" Id="{e5cfebb4-1149-4b39-adfb-333fbff08c59}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_Intersection
 VAR
-	_phase : E_Phase := E_Phase.AllRed;
+    _phase : E_Phase := E_Phase.AllRed;
 
-    // Concrete instances — these actually own the light objects
-    _nsLightImpl : FB_TrafficLight;
-    _ewLightImpl : FB_TrafficLight;
-
-    // Interface references — the intersection talks to lights via the contract
+    // Lights are now INJECTED, not created here
     _nsLight : ITrafficLight;
     _ewLight : ITrafficLight;
-	
-	// edge detector for manual advance requests
-	_rtrigManual : R_TRIG;
+
+    _rtrigManual : R_TRIG;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -88,14 +83,15 @@ END_VAR
     <Method Name="FB_init" Id="{bf28138a-dec2-4334-9ac1-1994ca97fde8}">
       <Declaration><![CDATA[METHOD FB_init : BOOL
 VAR_INPUT
-	bInitRetains : BOOL; // if TRUE, the retain variables are initialized (warm start / cold start)
-	bInCopyCode : BOOL;  // if TRUE, the instance afterwards gets moved into the copy code (online change)
+    bInitRetains : BOOL;
+    bInCopyCode  : BOOL;
+    nsLight      : ITrafficLight;   // injected
+    ewLight      : ITrafficLight;   // injected
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[// Point interface references at the concrete instances (runs once, at creation)
-_nsLight := _nsLightImpl;
-_ewLight := _ewLightImpl;]]></ST>
+        <ST><![CDATA[_nsLight := nsLight;
+_ewLight := ewLight;]]></ST>
       </Implementation>
     </Method>
     <Property Name="NorthSouthState" Id="{9d6778a6-7c76-4503-876a-525b44455ef7}">

@@ -2595,11 +2595,11 @@
             },
             "USEMAPPING": true
         },
-        "PLC1.MAIN.fbIntersection._ewLightImpl._state": {
+        "PLC1.MAIN.ewLight._state": {
             "ACCESS": 3,
             "DOMAIN": "ADS",
             "DYNAMIC": true,
-            "MAPPING": "PLC1::MAIN::fbIntersection::_ewLightImpl::_state",
+            "MAPPING": "PLC1::MAIN::ewLight::_state",
             "SCHEMA": {
                 "allOf": [
                     {
@@ -2612,11 +2612,11 @@
             },
             "USEMAPPING": true
         },
-        "PLC1.MAIN.fbIntersection._nsLightImpl._state": {
+        "PLC1.MAIN.nsLight._state": {
             "ACCESS": 3,
             "DOMAIN": "ADS",
             "DYNAMIC": true,
-            "MAPPING": "PLC1::MAIN::fbIntersection::_nsLightImpl::_state",
+            "MAPPING": "PLC1::MAIN::nsLight::_state",
             "SCHEMA": {
                 "allOf": [
                     {
@@ -3549,9 +3549,11 @@
                 "Login": 3,
                 "Logout": 3,
                 "PLC1.MAIN.bManualAdvance": 3,
+                "PLC1.MAIN.ewLight._state": 3,
                 "PLC1.MAIN.fbIntersection._ewLightImpl._state": 3,
                 "PLC1.MAIN.fbIntersection._nsLightImpl._state": 3,
                 "PLC1.MAIN.fbIntersection._phase": 3,
+                "PLC1.MAIN.nsLight._state": 3,
                 "SetLocale": 3,
                 "SubscribeEvents": 3,
                 "TcHmiSqliteLogger.Diagnostics": 1,

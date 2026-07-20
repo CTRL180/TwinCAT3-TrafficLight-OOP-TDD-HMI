@@ -9,10 +9,36 @@
 
 
 
+
+
+
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-background-color" type="application/json">
+{
+  "color": "None"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-color" type="application/json">
+{
+  "color": "None"
+}
+</script>
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-fill-color" type="application/json">
+{
+  "color": "rgba(0, 0, 0, 1)"
+}
+</script>
+
 <script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
 [
   {
-    "event": "%s%PLC1.MAIN.fbIntersection._nsLightImpl._state%/s%",
+    "event": "%s%PLC1.MAIN.nsLight._state%/s%",
     "actions": [
       {
         "objectType": "Condition",
@@ -23,13 +49,13 @@
               {
                 "compare1": {
                   "objectType": "Symbol",
-                  "valueType": "tchmi:server#/definitions/PLC1.TrafficControlLib.E_LightState",
-                  "symbolExpression": "%s%PLC1.MAIN.fbIntersection._nsLightImpl._state%/s%"
+                  "valueType": "tchmi:general#/definitions/String",
+                  "symbolExpression": "%s%PLC1.MAIN.nsLight._state%/s%"
                 },
                 "compare2": {
                   "objectType": "StaticValue",
-                  "valueType": "tchmi:server#/definitions/PLC1.TrafficControlLib.E_LightState",
-                  "value": 0
+                  "valueType": "tchmi:general#/definitions/String",
+                  "value": "0"
                 },
                 "compareOperator": "==",
                 "logic": null
@@ -44,7 +70,7 @@
                   "objectType": "StaticValue",
                   "valueType": "tchmi:framework#/definitions/Color",
                   "value": {
-                    "color": "rgba(249, 10, 10, 1)"
+                    "color": "rgba(239, 21, 21, 1)"
                   }
                 },
                 "asyncWait": true
@@ -75,36 +101,12 @@
   }
 ]
 </script>
-
-
-
-
-
-<script data-tchmi-target-attribute="data-tchmi-background-color" type="application/json">
-{
-  "color": "None"
-}
-</script>
-
-<script data-tchmi-target-attribute="data-tchmi-border-color" type="application/json">
-{
-  "color": "None"
-}
-</script>
-
-
-
-<script data-tchmi-target-attribute="data-tchmi-fill-color" type="application/json">
-{
-  "color": "rgba(0, 0, 0, 1)"
-}
-</script>
 </div>
 <div id="YellowNS" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiEllipse" data-tchmi-height="57" data-tchmi-height-unit="px" data-tchmi-left="258" data-tchmi-left-unit="px" data-tchmi-top="178" data-tchmi-top-unit="px" data-tchmi-width="57" data-tchmi-width-unit="px" data-tchmi-zindex="3">
 <script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
 [
   {
-    "event": "%s%PLC1.MAIN.fbIntersection._nsLightImpl._state%/s%",
+    "event": "%s%PLC1.MAIN.nsLight._state%/s%",
     "actions": [
       {
         "objectType": "Condition",
@@ -115,8 +117,8 @@
               {
                 "compare1": {
                   "objectType": "Symbol",
-                  "valueType": "tchmi:server#/definitions/PLC1.TrafficControlLib.E_LightState",
-                  "symbolExpression": "%s%PLC1.MAIN.fbIntersection._nsLightImpl._state%/s%"
+                  "valueType": "tchmi:general#/definitions/String",
+                  "symbolExpression": "%s%PLC1.MAIN.nsLight._state%/s%"
                 },
                 "compare2": {
                   "objectType": "StaticValue",
@@ -196,7 +198,7 @@
 <script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
 [
   {
-    "event": "%s%PLC1.MAIN.fbIntersection._nsLightImpl._state%/s%",
+    "event": "%s%PLC1.MAIN.nsLight._state%/s%",
     "actions": [
       {
         "objectType": "Condition",
@@ -207,8 +209,8 @@
               {
                 "compare1": {
                   "objectType": "Symbol",
-                  "valueType": "tchmi:server#/definitions/PLC1.TrafficControlLib.E_LightState",
-                  "symbolExpression": "%s%PLC1.MAIN.fbIntersection._nsLightImpl._state%/s%"
+                  "valueType": "tchmi:general#/definitions/String",
+                  "symbolExpression": "%s%PLC1.MAIN.nsLight._state%/s%"
                 },
                 "compare2": {
                   "objectType": "StaticValue",
@@ -349,7 +351,7 @@
 <script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
 [
   {
-    "event": "%s%PLC1.MAIN.fbIntersection._ewLightImpl._state%/s%",
+    "event": "%s%PLC1.MAIN.ewLight._state%/s%",
     "actions": [
       {
         "objectType": "Condition",
@@ -361,7 +363,7 @@
                 "compare1": {
                   "objectType": "Symbol",
                   "valueType": "tchmi:general#/definitions/String",
-                  "symbolExpression": "%s%PLC1.MAIN.fbIntersection._ewLightImpl._state%/s%"
+                  "symbolExpression": "%s%PLC1.MAIN.ewLight._state%/s%"
                 },
                 "compare2": {
                   "objectType": "StaticValue",
@@ -443,7 +445,7 @@
 <script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
 [
   {
-    "event": "%s%PLC1.MAIN.fbIntersection._ewLightImpl._state%/s%",
+    "event": "%s%PLC1.MAIN.ewLight._state%/s%",
     "actions": [
       {
         "objectType": "Condition",
@@ -455,7 +457,7 @@
                 "compare1": {
                   "objectType": "Symbol",
                   "valueType": "tchmi:general#/definitions/String",
-                  "symbolExpression": "%s%PLC1.MAIN.fbIntersection._ewLightImpl._state%/s%"
+                  "symbolExpression": "%s%PLC1.MAIN.ewLight._state%/s%"
                 },
                 "compare2": {
                   "objectType": "StaticValue",
@@ -537,7 +539,7 @@
 <script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
 [
   {
-    "event": "%s%PLC1.MAIN.fbIntersection._ewLightImpl._state%/s%",
+    "event": "%s%PLC1.MAIN.ewLight._state%/s%",
     "actions": [
       {
         "objectType": "Condition",
@@ -549,7 +551,7 @@
                 "compare1": {
                   "objectType": "Symbol",
                   "valueType": "tchmi:general#/definitions/String",
-                  "symbolExpression": "%s%PLC1.MAIN.fbIntersection._ewLightImpl._state%/s%"
+                  "symbolExpression": "%s%PLC1.MAIN.ewLight._state%/s%"
                 },
                 "compare2": {
                   "objectType": "StaticValue",

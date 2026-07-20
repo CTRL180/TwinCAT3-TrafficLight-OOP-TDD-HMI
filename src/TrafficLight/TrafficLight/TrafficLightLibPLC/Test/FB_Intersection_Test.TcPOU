@@ -17,7 +17,9 @@ UpdateReportsFalseWithoutEdge();]]></ST>
     <Method Name="IntersectionAdvancesThroughPhasesInOrder" Id="{5843715c-18fa-49a6-a054-df0239c4a384}">
       <Declaration><![CDATA[METHOD PRIVATE IntersectionAdvancesThroughPhasesInOrder
 VAR
-	intersection : FB_Intersection;
+	nsLight      : FB_TrafficLight;
+    ewLight      : FB_TrafficLight;
+    intersection : FB_Intersection(nsLight := nsLight, ewLight := ewLight);
 END_VAR
 ]]></Declaration>
       <Implementation>
@@ -65,7 +67,9 @@ TEST_FINISHED();]]></ST>
     <Method Name="ManualRequestAdvancesPhase" Id="{43bcf4b9-21a6-4af9-86c8-80e7268258b5}">
       <Declaration><![CDATA[METHOD PRIVATE ManualRequestAdvancesPhase
 VAR
-	intersection : FB_Intersection;
+	nsLight      : FB_TrafficLight;
+    ewLight      : FB_TrafficLight;
+    intersection : FB_Intersection(nsLight := nsLight, ewLight := ewLight);
 END_VAR
 ]]></Declaration>
       <Implementation>
@@ -86,7 +90,9 @@ TEST_FINISHED();]]></ST>
     <Method Name="NeverTwoGreensAcrossFullCycle" Id="{483527da-3675-4dea-b5ff-c586d75218b1}">
       <Declaration><![CDATA[METHOD PRIVATE NeverTwoGreensAcrossFullCycle
 VAR
-	intersection : FB_Intersection;
+	nsLight      : FB_TrafficLight;
+    ewLight      : FB_TrafficLight;
+    intersection : FB_Intersection(nsLight := nsLight, ewLight := ewLight);
     i            : INT;
     nsGreen      : BOOL;
     ewGreen      : BOOL;
@@ -113,7 +119,9 @@ TEST_FINISHED();]]></ST>
     <Method Name="NewIntersectionStartsInAllRed" Id="{70909ec8-d067-4845-976a-244e0c3b0421}">
       <Declaration><![CDATA[METHOD PRIVATE NewIntersectionStartsInAllRed
 VAR
-	intersection : FB_Intersection;
+	nsLight      : FB_TrafficLight;
+    ewLight      : FB_TrafficLight;
+    intersection : FB_Intersection(nsLight := nsLight, ewLight := ewLight);
 END_VAR
 ]]></Declaration>
       <Implementation>
@@ -130,7 +138,9 @@ TEST_FINISHED();]]></ST>
     <Method Name="NorthSouthFlowingShowsNsGreenEwRed" Id="{f2df457c-c78c-4463-bda3-4fad76f93f44}">
       <Declaration><![CDATA[METHOD PRIVATE NorthSouthFlowingShowsNsGreenEwRed
 VAR
-	intersection : FB_Intersection;
+	nsLight      : FB_TrafficLight;
+    ewLight      : FB_TrafficLight;
+    intersection : FB_Intersection(nsLight := nsLight, ewLight := ewLight);
 END_VAR
 ]]></Declaration>
       <Implementation>
@@ -154,7 +164,9 @@ TEST_FINISHED();]]></ST>
     <Method Name="UpdateReportsFalseWithoutEdge" Id="{aace1847-9951-4ad7-b1e7-c15698e09ca9}">
       <Declaration><![CDATA[METHOD PRIVATE UpdateReportsFalseWithoutEdge
 VAR
-	intersection : FB_Intersection;
+	nsLight      : FB_TrafficLight;
+    ewLight      : FB_TrafficLight;
+    intersection : FB_Intersection(nsLight := nsLight, ewLight := ewLight);
     didAdvance   : BOOL;
 END_VAR
 ]]></Declaration>
@@ -173,7 +185,9 @@ TEST_FINISHED();]]></ST>
     <Method Name="UpdateReportsTrueWhenItAdvances" Id="{beb0b23f-7737-4ef8-b507-a6a2e8881dd7}">
       <Declaration><![CDATA[METHOD PRIVATE UpdateReportsTrueWhenItAdvances
 VAR
-	intersection : FB_Intersection;
+	nsLight      : FB_TrafficLight;
+    ewLight      : FB_TrafficLight;
+    intersection : FB_Intersection(nsLight := nsLight, ewLight := ewLight);
     didAdvance   : BOOL;
 END_VAR
 ]]></Declaration>
